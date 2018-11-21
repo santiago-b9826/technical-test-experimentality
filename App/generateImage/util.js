@@ -7,14 +7,16 @@ const {
     headers
 } = require('./config');
 
-const generateImage = async () => {
-    try {
-        let response = await consumeAxios(protocol, host, path, headers);
-        return response;
-    } catch (error) {
-        return { message: "Can not get image" };
-        ;
-    }
+const generateImage = async (quote, author) => {
+    console.log("asdf");
+
+    const GoogleImages = require('google-images');
+
+    const client = new GoogleImages('018086029937178784327:fijyfg8dmxe', 'AIzaSyA3HEHgMGK33b8neYFHkOMuUEjQoud7gNA');
+    console.log("asdfa");
+
+    let a = await client.search(`${quote},${author}`);
+    console.log(a[0].url);
 }
 
 module.exports = {

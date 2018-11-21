@@ -13,7 +13,8 @@ const generateImageAndQuote = async (req, res) => {
         let params;
 
         quote = await generateQuote();
-
+        console.log(quote);        
+        image = await generateImage(quote.quote,quote.author);
         /*
         image = await generateImage();
         params = {
