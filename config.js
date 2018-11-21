@@ -1,12 +1,11 @@
-const path = require('path');
+const mongoUser = 'root';
+const mongoPassword = 'sbroot123';
 
-const rootPath = path.resolve(__dirname, '.');
 const port = process.env.DEV ? 5000 : 8080;
 const morganMode = process.env.Dev ? 'dev' : 'tiny';
-const mongoDB = '';
+const mongoDB = `mongodb://${mongoUser}:${mongoPassword}@ds161487.mlab.com:61487/changing-life-quotes`;
 
 module.exports = {
-  rootPath,
   port,
   morganMode,
   mongoDB
