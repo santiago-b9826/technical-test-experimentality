@@ -1,37 +1,30 @@
 const { generateQuote } = require('../generateQuote/util');
 const { generateImage } = require('../generateImage/util');
-const { saveImageAndQuote } = require('../database/util');
+const { saveQuote } = require('../database/util');
 
-const obtainQuote = (req, res) => {
+const getQuote = (req, res) => {
 
 }
 
-const generateImageAndQuote = async (req, res) => {
+const createQuote = async (req, res) => {
     try {
         let quote = await generateQuote();
         if (quote.message) {
             res.status(500).send(quote);
         }
 
-        let image = await generateImage(quote.quote, quote.author);
+        let image = await generateImage(quote);
         if (image.message) {
             res.status(500).send(image);
         }
 
-        let params = {
-            id: '',
-            quote: quote,
-            image: image
-        }
-
-        /*let save = await saveImageAndQuote(params);
+        /*let save = await saveQuote(params);
         if(save.message){
 
         }*/
         let response = {
-            quote: quote.quote,
-            author: quote.author,
-            category: quote.category,
+            id: '',
+            quote: quote,
             url: image
         }
         res.status(200).send(response);
@@ -45,7 +38,7 @@ const deleteQuote = (req, res) => {
 }
 
 module.exports = {
-    obtainQuote,
-    generateImageAndQuote,
+    getQuote,
+    createQuote,
     deleteQuote
 };

@@ -1,8 +1,8 @@
 const Router = require('express').Router;
 
 const {
-    obtainQuote,
-    generateImageAndQuote,
+    getQuote,
+    createQuote,
     deleteQuote
 } = require('./util');
 
@@ -10,12 +10,12 @@ let router = new Router();
 
 router.route('/generate-changing-life-quote/:id')
     .get((...args) => {
-        obtainQuote(...args);
+        getQuote(...args);
     });
 
 router.route('/generate-changing-life-quote')
     .post((...args) => {
-        generateImageAndQuote(...args);
+        createQuote(...args);
     });
 
 router.route('/generate-changing-life-quote/:id')

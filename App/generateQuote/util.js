@@ -14,7 +14,7 @@ const consumeAxios = async (protocol, host, path, headers) => {
     });
     try {
         let response = await quote.get(path);
-        return response.data[0];
+        return response.data[0].quote;
     } catch (error) {
         return { message: "Can not get quote" };
     }

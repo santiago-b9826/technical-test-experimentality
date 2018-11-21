@@ -5,10 +5,10 @@ const {
     apiKey
 } = require('./config');
 
-const generateImage = async (quote, author) => {
+const generateImage = async (quote) => {
     try {
         const client = new googleImages(cseId, apiKey);
-        let a = await client.search(`${quote},${author}`);
+        let a = await client.search(quote);
         return a[0].url;
     } catch (error) {
         return { message: "Can not get image" };
