@@ -8,25 +8,35 @@ const obtainQuote = (req, res) => {
 
 const generateImageAndQuote = async (req, res) => {
     try {
-        let quote;
-        let image;
-        let params;
+        let quote = await generateQuote();
+        if (quote.message) {
+            res.status(500).send(quote);
+        }
 
-        quote = await generateQuote();
-        console.log(quote);        
-        image = await generateImage(quote.quote,quote.author);
-        /*
-        image = await generateImage();
-        params = {
+        let image = await generateImage(quote.quote, quote.author);
+        if (image.message) {
+            res.status(500).send(image);
+        }
+
+        let params = {
             id: '',
             quote: quote,
             image: image
         }
 
-        let imageAndQuote = await saveImageAndQuote(params);
-        */
-    } catch (error) {
+        /*let save = await saveImageAndQuote(params);
+        if(save.message){
 
+        }*/
+        let response = {
+            quote: quote.quote,
+            author: quote.author,
+            category: quote.category,
+            url: image
+        }
+        res.status(200).send(response);
+    } catch (error) {
+        res.status(500).send({ message: "Can not generate Image and Quote" });
     }
 }
 
