@@ -16,7 +16,6 @@ const readQ = async (id) => {
 
 const deleteQ = async (id) => {
     let response = await model.findOneAndRemove({ id: id });
-    console.log("db", response);
     return response;
 }
 

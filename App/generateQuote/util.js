@@ -7,6 +7,14 @@ const {
     headers
 } = require('./config');
 
+/**
+ * Consume API generator of quotes with Axios.
+ * 
+ * @param {*} protocol 
+ * @param {*} host 
+ * @param {*} path 
+ * @param {*} headers 
+ */
 const consumeAxios = async (protocol, host, path, headers) => {
     const quote = axios.create({
         baseURL: `${protocol}${host}`,

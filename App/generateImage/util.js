@@ -5,6 +5,10 @@ const {
     apiKey
 } = require('./config');
 
+/**
+ * Consume API generator of Images with Google Images.
+ * @param {*} quote 
+ */
 const generateImage = async (quote) => {
     try {
         const client = new googleImages(cseId, apiKey);

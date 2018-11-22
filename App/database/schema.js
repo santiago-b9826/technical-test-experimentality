@@ -1,5 +1,8 @@
 let mongoose = require('mongoose');
 
+/**
+ * Quote Structure 
+ */
 let quote = {
     id: String,
     quote: String,
