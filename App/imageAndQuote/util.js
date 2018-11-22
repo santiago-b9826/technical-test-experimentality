@@ -45,7 +45,7 @@ const getQuote = async (req, res) => {
         let response = await formatQuote(read.id, read.quote, read.image);
         res.status(200).send(response);
     } catch (error) {
-        res.status(500).send({ message: `Can not get Quote with id: ${req.params.id}, maybe doesn't exist` });
+        res.send({ message: `Can not get Quote with id: ${req.params.id}, maybe doesn't exist` });
     }
 }
 
@@ -87,7 +87,7 @@ const createQuote = async (req, res) => {
         response.id = save.id;
         res.status(200).send(response);
     } catch (error) {
-        res.status(500).send({ message: 'Can not generate Image and Quote' });
+        res.send({ message: 'Can not generate Image and Quote' });
     }
 }
 
@@ -121,7 +121,7 @@ const deleteQuote = async (req, res) => {
         }
         res.status(200).send(message);
     } catch (error) {
-        res.status(500).send({ message: `Can not delete Quote with id: ${req.params.id}, maybe doesn't exist` });
+        res.send({ message: `Can not delete Quote with id: ${req.params.id}, maybe doesn't exist` });
     }
 }
 
